@@ -13,7 +13,7 @@ class BookDetail extends React.Component {
         <ModalBody>
           <div className="row">
             <div className="col-md-3">
-              <img alt="book" src={this.props.bookDetail.imageLinks !== undefined ? this.props.bookDetail.imageLinks.thumbnail : ""} style={{marginBottom: 20}} />
+              <div className="book-cover" onClick={this.showBookDetail} style={{ marginBottom:20, width: 128, height: 193, backgroundImage: `url(${this.props.bookDetail.imageLinks !== undefined ? this.props.bookDetail.imageLinks.thumbnail : ""})` }}></div>
               <QRCode value={book.canonicalVolumeLink !== undefined ? book.canonicalVolumeLink : ''} />
               <div style={{marginTop: 20}}>
                 <span className="book-detail">{book.shelf}</span>
@@ -24,7 +24,7 @@ class BookDetail extends React.Component {
               <h5>{book.subtitle}</h5>
               <p>{book.publisher} - {book.publishedDate} - {book.language} - {book.pageCount} pages</p>
               <p>{book.authors}</p>
-              <span className="book-detail">{book.categories}</span>                        
+              <span className="book-detail">{book.categories ? book.categories : "no categorie"}</span>                        
               <div style={{marginTop: 20}}>{this.props.bookDetail.description}</div>
             </div>
           </div>
